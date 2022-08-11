@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const algoliasearch = require('algoliasearch');
 const slugify = require('transliteration').slugify;
+// 这个文件不存在，貌似是用于查询用的
 const key = require('./algolia-key');
 
 const client = algoliasearch('4C63BTGP6S', key);
