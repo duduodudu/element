@@ -11,6 +11,8 @@ aria.Utils = aria.Utils || {};
  *  true if a focusable element is found and focus is set.
  */
 aria.Utils.focusFirstDescendant = function(element) {
+  // 添加判断childNodes是否为空
+  if (!element) return false;
   for (var i = 0; i < element.childNodes.length; i++) {
     var child = element.childNodes[i];
     if (aria.Utils.attemptFocus(child) || aria.Utils.focusFirstDescendant(child)) {
@@ -29,6 +31,8 @@ aria.Utils.focusFirstDescendant = function(element) {
  */
 
 aria.Utils.focusLastDescendant = function(element) {
+  // 添加判断childNodes是否为空
+  if (!element) return false;
   for (var i = element.childNodes.length - 1; i >= 0; i--) {
     var child = element.childNodes[i];
     if (aria.Utils.attemptFocus(child) || aria.Utils.focusLastDescendant(child)) {

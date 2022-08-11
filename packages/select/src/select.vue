@@ -651,6 +651,9 @@
         if (this.collapseTags && !this.filterable) return;
         this.$nextTick(() => {
           if (!this.$refs.reference) return;
+          // 添加判断childNodes是否为空
+          if (!this.$refs.reference.$el) return;
+          if (!this.$refs.reference.$el.childNodes) return;
           let inputChildNodes = this.$refs.reference.$el.childNodes;
           let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0];
           const tags = this.$refs.tags;

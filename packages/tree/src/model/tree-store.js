@@ -34,6 +34,8 @@ export default class TreeStore {
     const filterNodeMethod = this.filterNodeMethod;
     const lazy = this.lazy;
     const traverse = function(node) {
+      // 添加判断childNodes是否为空
+      if (!node) return;
       const childNodes = node.root ? node.root.childNodes : node.childNodes;
 
       childNodes.forEach((child) => {
@@ -178,6 +180,8 @@ export default class TreeStore {
   getHalfCheckedNodes() {
     const nodes = [];
     const traverse = function(node) {
+      // 添加判断childNodes是否为空
+      if (!node) return;
       const childNodes = node.root ? node.root.childNodes : node.childNodes;
 
       childNodes.forEach((child) => {

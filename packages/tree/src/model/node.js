@@ -23,6 +23,8 @@ export const getChildState = node => {
 };
 
 const reInitChecked = function(node) {
+  // 添加判断childNodes是否为空
+  if (!node) return;
   if (node.childNodes.length === 0) return;
 
   const {all, none, half} = getChildState(node.childNodes);
@@ -193,7 +195,7 @@ export default class Node {
 
   contains(target, deep = true) {
     const walk = function(parent) {
-      const children = parent.childNodes || [];
+      const children = parent && parent.childNodes || [];
       let result = false;
       for (let i = 0, j = children.length; i < j; i++) {
         const child = children[i];
