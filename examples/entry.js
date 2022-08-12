@@ -15,6 +15,7 @@ import 'packages/theme-chalk/src/index.scss';
 import './demo-styles/index.scss';
 import './assets/styles/common.css';
 import './assets/styles/fonts/style.css';
+// 图标icon的js文件 通过 iconInit.js 生成
 import icon from './icon.json';
 
 Vue.use(Element);

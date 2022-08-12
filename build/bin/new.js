@@ -1,4 +1,19 @@
 'use strict';
+/**
+ * 添加新组件
+ *  比如：make new city 城市列表
+ *  1、在 /packages 目录下新建组件目录，并完成目录结构的创建
+ *  2、创建组件文档，/examples/docs/{lang}/city.md
+ *  3、创建组件单元测试文件，/test/unit/specs/city.spec.js
+ *  4、创建组件样式文件，/packages/theme-chalk/src/city.scss
+ *  5、创建组件类型声明文件，/types/city.d.ts
+ *  6、配置
+ *      在 /components.json 文件中配置组件信息
+ *      在 /examples/nav.config.json 中添加该组件的路由配置
+ *      在 /packages/theme-chalk/src/index.scss 文件中自动引入该组件的样式文件
+ *      将类型声明文件在 /types/element-ui.d.ts 中自动引入
+ *  总之，该脚本的存在，让你只需专注于编写你的组件代码，其它的一概不用管
+ */
 
 console.log();
 process.on('exit', () => {
