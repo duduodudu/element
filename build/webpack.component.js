@@ -5,8 +5,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const Components = require('../components.json');
 const config = require('./config');
 
+// import Button from 'element-ui' => require('element-ui/lib/button')
 const webpackConfig = {
   mode: 'production',
+  // 按需加载的包
+  // 一个组件一个包
   entry: Components,
   output: {
     path: path.resolve(process.cwd(), './lib'),

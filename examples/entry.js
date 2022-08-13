@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Element from 'main/index.js';
 import hljs from 'highlight.js';
 import routes from './route.config';
+//
 import demoBlock from './components/demo-block';
 import MainFooter from './components/footer';
 import MainHeader from './components/header';
@@ -11,15 +12,20 @@ import SideNav from './components/side-nav';
 import FooterNav from './components/footer-nav';
 import title from './i18n/title';
 
+// 样式
 import 'packages/theme-chalk/src/index.scss';
+// 官网
 import './demo-styles/index.scss';
 import './assets/styles/common.css';
 import './assets/styles/fonts/style.css';
+
 // 图标icon的js文件 通过 iconInit.js 生成
 import icon from './icon.json';
-
+// 引入组件库
 Vue.use(Element);
+// 引入卤藕
 Vue.use(VueRouter);
+// 官网页面的一下全局组件
 Vue.component('demo-block', demoBlock);
 Vue.component('main-footer', MainFooter);
 Vue.component('main-header', MainHeader);

@@ -4,6 +4,7 @@ set -e
 git checkout master
 git merge dev
 
+# 选择选择版本
 VERSION=`npx select-version-cli`
 
 read -p "Releasing $VERSION - are you sure? (y/n)" -n 1 -r
@@ -16,11 +17,12 @@ then
   VERSION=$VERSION npm run dist
 
   # ssr test
-  node test/ssr/require.test.js            
+  node test/ssr/require.test.js
 
   # publish theme
   echo "Releasing theme-chalk $VERSION ..."
   cd packages/theme-chalk
+  # 进入主题目录，设置版本信息
   npm version $VERSION --message "[release] $VERSION"
   if [[ $VERSION =~ "beta" ]]
   then
@@ -33,7 +35,7 @@ then
   # commit
   git add -A
   git commit -m "[build] $VERSION"
-  npm version $VERSION --message "[release] $VERSION"
+  npm   $VERSION --message "[release] $VERSION"
 
   # publish
   git push eleme master

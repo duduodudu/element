@@ -90,7 +90,7 @@ import DescriptionsItem from '../packages/descriptions-item/index.js';
 import Result from '../packages/result/index.js';
 import locale from 'element-ui/src/locale';
 import CollapseTransition from 'element-ui/src/transitions/collapse-transition';
-
+/* 通过install方法注册的组件 */
 const components = [
   Pagination,
   Dialog,

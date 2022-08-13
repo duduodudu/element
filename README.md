@@ -8,8 +8,17 @@
 - nav.config.json 组件侧边导航
 -  
 
+### 
+- .travis.yml：持续集成（CI）的配置文件，它的作用就是在代码提交时，根据该文件执行对应脚本。
+- 组件开发规范中的第一条：通过 make new 创建组件目录结构，包含测试代码、入口文件、文档。
+
 
 # 命名空间的修改
 1. build/bin/new.js 生成组件
 2. package/theme-chalk/src/mixins/config.scss
 3. 
+
+
+# 其他参考
+- [Github注释@liyongning](https://github.com/liyongning/element-ui/commit/1420f7dac7f62585f96452e3280eb39b68e3ae2c)
+
