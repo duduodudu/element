@@ -1,5 +1,8 @@
 import { addClass, removeClass } from 'element-ui/src/utils/dom';
 
+/**
+ * 动画相关的
+ */
 class Transition {
   beforeEnter(el) {
     addClass(el, 'collapse-transition');

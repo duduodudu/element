@@ -41,8 +41,8 @@ const ComponentName = uppercamelcase(componentname);
 const PackagePath = path.resolve(__dirname, '../../packages', componentname);
 // 需要新建/新添加的文件，以数组管理，方便遍历
 const Files = [
-    // packages/index.js
-    // 源代码的index ,含有install注册方法和导出方法
+  // packages/index.js
+  // 源代码的index ,含有install注册方法和导出方法
   {
     filename: 'index.js',
     content: `import ${ComponentName} from './src/main';
@@ -54,8 +54,8 @@ ${ComponentName}.install = function(Vue) {
 
 export default ${ComponentName};`
   },
-    // packages/src/main.vue
-    // 默认的vue模板
+  // packages/src/main.vue
+  // 默认的vue模板
   {
     filename: 'src/main.vue',
     content: `<template>
@@ -68,7 +68,7 @@ export default {
 };
 </script>`
   },
-    // 组件md文档(英语)
+  // 组件md文档(英语)
   {
     filename: path.join('../../examples/docs/zh-CN', `${componentname}.md`),
     content: `## ${ComponentName} ${chineseName}`
@@ -107,7 +107,7 @@ describe('${ComponentName}', () => {
 });
 `
   },
-    // 样式文件
+  // 样式文件
   {
     filename: path.join('../../packages/theme-chalk/src', `${componentname}.scss`),
     content: `@import "mixins/mixins";
@@ -116,7 +116,7 @@ describe('${ComponentName}', () => {
 @include b(${componentname}) {
 }`
   },
-    // 声明文件
+  // 声明文件
   {
     filename: path.join('../../types', `${componentname}.d.ts`),
     content: `import { ElementUIComponent } from './component'

@@ -1,6 +1,12 @@
+/**
+ * 根据侧边导航栏配置，生成对应的router
+ */
+// 侧边导航配置
 import navConfig from './nav.config';
+// 语言配置文件
 import langs from './i18n/route';
 
+// 加载官网的vue文件
 const LOAD_MAP = {
   'zh-CN': name => {
     return r => require.ensure([], () =>
@@ -27,7 +33,7 @@ const LOAD_MAP = {
 const load = function(lang, path) {
   return LOAD_MAP[lang](path);
 };
-
+// 加载组件的md文档
 const LOAD_DOCS_MAP = {
   'zh-CN': path => {
     return r => require.ensure([], () =>
@@ -54,38 +60,49 @@ const LOAD_DOCS_MAP = {
 const loadDocs = function(lang, path) {
   return LOAD_DOCS_MAP[lang](path);
 };
-
+//
 const registerRoute = (navConfig) => {
   let route = [];
   Object.keys(navConfig).forEach((lang, index) => {
     let navs = navConfig[lang];
+    // 安装页
     route.push({
       path: `/${ lang }/component`,
       redirect: `/${ lang }/component/installation`,
       component: load(lang, 'component'),
       children: []
     });
+    // 组件 填充children数组
     navs.forEach(nav => {
+      // 外部连接
       if (nav.href) return;
+      // 分组
       if (nav.groups) {
+        // 组件部分
         nav.groups.forEach(group => {
           group.list.forEach(nav => {
             addRoute(nav, lang, index);
           });
         });
       } else if (nav.children) {
+        // 指南
         nav.children.forEach(nav => {
           addRoute(nav, lang, index);
         });
       } else {
+        // 其他
         addRoute(nav, lang, index);
       }
     });
   });
+  // 注册路由
   function addRoute(page, lang, index) {
+    // 更新日志 比较特殊
+    //
     const component = page.path === '/changelog'
       ? load(lang, 'changelog')
       : loadDocs(lang, page.path);
+    //
     let child = {
       path: page.path.slice(1),
       meta: {
@@ -104,7 +121,7 @@ const registerRoute = (navConfig) => {
 };
 
 let route = registerRoute(navConfig);
-
+// 其他非组件性的文档
 const generateMiscRoutes = function(lang) {
   let guideRoute = {
     path: `/${ lang }/guide`, // 指南
@@ -167,7 +184,7 @@ route.push({
   name: 'play',
   component: require('./play/index.vue')
 });
-
+// 默认语言 中文
 let userLanguage = localStorage.getItem('ELEMENT_LANGUAGE') || window.navigator.language || 'en-US';
 let defaultPath = '/en-US';
 if (userLanguage.indexOf('zh-') !== -1) {
@@ -178,6 +195,7 @@ if (userLanguage.indexOf('zh-') !== -1) {
   defaultPath = '/fr-FR';
 }
 
+// 默认首页和404页(重定向到首页)
 route = route.concat([{
   path: '/',
   redirect: defaultPath
